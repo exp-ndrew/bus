@@ -1,0 +1,12 @@
+<h1> New Line </h1>
+
+<%= form_for(@line) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+     <%= render('layouts/errors', :object => @line) %>
+  </div>
+  <%= f.submit(:class => "btn btn-success") %>
+<% end %>
+
+

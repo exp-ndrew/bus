@@ -1,0 +1,12 @@
+<h1>Lines Index</h1>
+
+<%= render('layouts/errors', :object => @line) %>
+
+<ul>
+  <% @lines.each do |l| %>
+    <li><%= l.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create Line", new_line_path, :class => "btn btn-primary" %>
+<%= link_to "Station View", stations_path, :class => "btn btn-info" %>
