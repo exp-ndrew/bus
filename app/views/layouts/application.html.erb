@@ -12,7 +12,12 @@
   <div style="background-color:green; color:white; text-align:center">
   <%= flash[:notice] %>
   </div>
+  <div style="background-color:orange; color:white; text-align:center">
+  <%= flash[:alert] %>
+  </div>
+
   <%= yield %>
+
 </div>
 </body>
 </html>

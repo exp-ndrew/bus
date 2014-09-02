@@ -1,0 +1,5 @@
+<h1><%= @line.name %></h1>
+
+<%= link_to 'Edit Line', edit_line_path, :class => "btn btn-warning" %>
+<%= link_to 'Delete Line', line_path, :method => 'delete', :class => "btn btn-danger" %>
+<%= link_to 'Back to Lines', lines_path, :class => "btn btn-primary" %>

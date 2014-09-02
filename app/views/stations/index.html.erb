@@ -1,0 +1,12 @@
+<h1>Stations Index</h1>
+
+<%= render('layouts/errors', :object => @station) %>
+
+<ul>
+  <% @stations.each do |s| %>
+    <li><%= link_to "#{s.name}", station_path(s) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create Station", new_station_path, :class => "btn btn-primary" %>
+<%= link_to "Lines View", lines_path, :class => "btn btn-info" %>
