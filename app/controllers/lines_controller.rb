@@ -4,6 +4,7 @@ class LinesController < ApplicationController
   end
 
   def new
+    @stations = Station.all
     @line = Line.new
   end
 
@@ -18,26 +19,26 @@ class LinesController < ApplicationController
   end
 
   def show
+    @stations = Station.all
     @line = Line.find(params[:id])
   end
 
   def destroy
     @line = Line.find(params[:id])
     @line.destroy
-    flash[:alert] = "#{@line.name.capitalize} line deleted."
+    flash[:alert] = "#{@line.name} line deleted."
     redirect_to lines_path
   end
 
   def edit
     @line = Line.find(params[:id])
+    @stations = Station.all
   end
 
   def update
     @line = Line.find(params[:id])
-    old_name = @line.name
-    @line.update(params[:line])
-    if @line.save
-      flash[:notice] = "#{old_name} has been updated to #{@line.name}"
+    if @line.update_attributes(params[:line])
+      flash[:notice] = "#{@line.name} has been updated."
       redirect_to line_path(@line)
     else
       render 'edit'

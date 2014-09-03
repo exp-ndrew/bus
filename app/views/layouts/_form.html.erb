@@ -4,5 +4,24 @@
     <%= f.text_field :name %>
      <%= render('layouts/errors', :object => @line) %>
   </div>
-  <%= f.submit(:class => "btn btn-success") %>
+<div class="field">
+
+    <% if object.class.to_s == "Line" %>
+      <div class="form-group checkboxes">
+        <%= f.collection_check_boxes :station_ids, Station.all, :id, :name do |b| %>
+  <p>
+    <%= b.check_box %>
+    <%= b.label %>
+  </p>
+  <% end %>
+      </div>
+      <%= f.submit :class => "btn btn-success" %>
+    <% else %>
+      <div class="form-group">
+        <%= f.collection_check_boxes :line_ids, Line.all, :id, :name %>
+      </div>
+      <%= f.submit :class => "btn btn-success" %>
+    <% end %>
+</div>
 <% end %>
+

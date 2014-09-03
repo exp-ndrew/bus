@@ -24,20 +24,19 @@ class StationsController < ApplicationController
   def destroy
     @station = Station.find(params[:id])
     @station.destroy
-    flash[:alert] = "#{@station.name.capitalize} station deleted."
+    flash[:alert] = "#{@station.name} station deleted."
     redirect_to stations_path
   end
 
   def edit
     @station = Station.find(params[:id])
+    @lines = Line.all
   end
 
   def update
     @station = Station.find(params[:id])
-    old_name = @station.name
-    @station.update(params[:station])
-    if @station.save
-      flash[:notice] = "#{old_name} has been updated to #{@station.name}"
+    if @station.update_attributes(params[:station])
+      flash[:notice] = "#{@station.name} has been updated."
       redirect_to station_path(@station)
     else
       render 'edit'
